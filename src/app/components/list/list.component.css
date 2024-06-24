@@ -1,0 +1,30 @@
+.list{
+  background-color: var(--main-color);
+width: 180px;
+  height: 680px;
+  border-top-left-radius: 60px;
+  text-align:right;
+
+
+}
+.list.open{
+  display: block;
+}
+.links li{
+  margin-bottom: 80px;
+}
+.links a{
+  text-decoration: none;
+  color:var(--white-color);
+
+
+
+}
+.list ul li img{
+  margin-bottom:5px;
+  margin-right: 5px;
+  width: 15px;
+  height: 30px;
+
+
+}

@@ -1,0 +1,64 @@
+
+<app-header (toggleDropdownEvent)="toggleDropdown()"></app-header>
+<div class="home d-flex ">
+   <div class="grid-container">
+    <form [formGroup]=" peopleReactiveForm" (ngSubmit)="onSubmit(this.peopleReactiveForm.value)">
+  <div class="grid-item title pt-3">
+   <h2>إضافة شخص</h2>
+   <div class="search position-relative">
+    <input type="search ">
+ <img src="../../../assets/images/search.svg">
+   </div>
+  </div>
+   <div class="grid-item sp d-flex justify-content-center align-items-center pb-2 pt-2">
+    <span ><input type="text" placeholder="" formControlName="Kname">إسم الكاهن</span>
+
+    <span > <input type="number" placeholder=""  formControlName="number">رقم الوثيقة</span>
+
+    <span><input type="text" placeholder=""  formControlName="churche">إسم الكنيسة</span>
+
+
+  </div>
+  <div class="grid-item details "><div class="right d-flex">
+    <label>الإسم</label>
+    <input type="text" placeholder=""  formControlName="name">
+    <label>الشهرة</label>
+    <input type="text" placeholder="" formControlName="neckName">
+    <label>الإسم الكنيسي</label>
+    <input type="text" placeholder="" formControlName="churcheName">
+    <label>إسم الأب</label>
+    <input type="text" placeholder=""  formControlName="fathertName">
+    <label>إسم الأم</label>
+    <input type="text" placeholder="" formControlName="motherName">
+    <label>الرقم الوطني</label>
+    <input type="text" placeholder=""  formControlName="nationalNumber">
+  </div>
+<div class="left d-flex">  <label>محل القيد</label>
+  <input type="text" placeholder=""  formControlName="place">
+  <label>رقم القيد</label>
+  <input type="text" placeholder=""  formControlName="Qnumber">
+  <label>رقم الموبايل</label>
+  <input type="text" placeholder=""  formControlName="mobileNumber">
+  <label>العنوان</label>
+  <input type="text" placeholder=""  formControlName="address">
+  <label>مكان الولادة</label>
+  <input type="text" placeholder=""  formControlName="bornPlace">
+  <label>تاريخ الولادة</label>
+  <input type="text" placeholder=""  formControlName="bornDate">
+</div>
+</div>
+<div class="grid-item gender">
+  <h3 class="fw-b">الجنس</h3>
+  <div class="d-flex ">
+    <input type="radio" id="female" name="gender" value="female"  formControlName="female">
+    <label for="female">أنثى</label>
+  <input type="radio" id="male" name="gender" value="male"  formControlName="male">
+<label for="male">ذكر</label>
+</div>
+<div class="grid-item mt-5 me-5 "><button type="submit">إضافة</button></div>
+</div>
+</form>
+
+   </div>
+<ng-template #dropdownContainer></ng-template>
+</div>

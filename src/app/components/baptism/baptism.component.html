@@ -1,0 +1,105 @@
+ <!--start emit-->
+ <app-header (toggleDropdownEvent)="toggleDropdown()"></app-header>
+
+<div class="home d-flex ">
+
+   <div class="grid-container">
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit(this.reactiveForm.value)">
+  <div class="grid-item title pt-3">
+   <h2>إصدار وثيقة معمودية</h2>
+   <div class="search position-relative">
+    <input type="search ">
+   <img src="../../../assets/images/search.svg">
+   </div>
+  </div>
+   <div class="grid-item sp d-flex justify-content-center align-items-center pb-2 pt-2">
+
+    <span ><input type="text" placeholder=""  formControlName="Kname">إسم الكاهن</span>
+
+    <span > <input type="number" placeholder="" formControlName="number">رقم الوثيقة</span>
+
+    <span><input type="text" placeholder=""  formControlName="churche">إسم الكنيسة</span>
+
+
+  </div>
+  <div class="grid-item details ">
+
+    <div class="right d-flex">
+
+    <label>الإسم</label>
+     <input type="text" placeholder=""  formControlName="name">
+    <label>الشهرة</label>
+    <input type="text" placeholder="" formControlName="neckName">
+
+    <label>إسم الأب</label>
+    <input type="text" placeholder=""  formControlName="fathertName">
+    <label>إسم الأم</label>
+    <input type="text" placeholder="" formControlName="motherName">
+
+
+  </div>
+
+<div class="left d-flex">
+  <label>رقم القيد</label>
+  <input type="text" placeholder=""  formControlName="Qnumber">
+  <label>الرقم الوطني</label>
+  <input type="text" placeholder=""  formControlName="nationalNumber">
+  <label>مكان الولادة</label>
+  <input type="text" placeholder=""  formControlName="bornPlace">
+  <label>تاريخ الولادة</label>
+  <input type="text" placeholder=""  formControlName="bornDate">
+</div>
+
+</div>
+
+
+    <div class="grid-item details end">
+      <div class="arab d-flex ">
+      <div class="right d-flex">
+
+          <label>اسم الكاهن المعمد</label>
+<input type="text" placeholder="" formControlName="priestName" >
+      <label>مكان العماد</label>
+      <input type="text" placeholder=""  formControlName="placeBaptism">
+      <label>تاريخ العماد</label>
+      <input type="text" placeholder=""  formControlName="date"></div>
+      <div class="left d-flex"><label>الإسم الكنيسي </label>
+        <input type="text" placeholder=""  formControlName="churcheName">
+        <label>العراب</label>
+        <input type="text" placeholder=""  formControlName="godfather">
+        <label>العرابة</label>
+        <input type="text" placeholder=""  formControlName="godmother">
+      </div>
+        </div>
+        <div class="save">
+          <div class=" finish d-flex  align-items-center pb-3">
+            <div class="check"> <input type="checkbox"  formControlName="ratification"><span>تم التصديق</span></div>
+            <div class="ond">  <input type="text" placeholder=""  formControlName="releaseDate"><span>صدرت بتاريخ</span></div>
+
+           </div>
+
+           <button value="حفظ" type="submit">حفظ</button>
+        </div>
+
+</div>
+
+
+</form>
+   </div>
+
+
+
+<ng-template #dropdownContainer></ng-template>
+
+
+ </div>
+
+
+<!--End emit-->
+
+
+
+
+
+
+

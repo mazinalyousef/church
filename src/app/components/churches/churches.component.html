@@ -1,0 +1,41 @@
+
+
+
+   <app-header (toggleDropdownEvent)="toggleDropdown()"></app-header>
+   <div class="home d-flex  ">
+      <div class="churches d-flex justify-content-center    align-items-center">
+        <div class="title mt-1 d-flex ">
+        <h1 class="title-text">الكنائس</h1>
+        <div class="search position-relative mt-3" >
+          <input type="search ">
+         <img src="../../../assets/images/search.svg">
+         </div>
+      </div>
+        <form [formGroup]=" churchesReactiveForm" (ngSubmit)=onSubmit(this.churchesReactiveForm.value)  class=" d-flex  justify-content-center  align-items-center p-3 text-light fs-5 mt-5"
+     >
+
+          <label for="fname">إسم الكنيسة</label>
+          <input type="text"   formControlName=" churchesName" >
+
+
+          <br>
+          <label for="lname">عنوان الكنيسة</label>
+          <input type="text"    formControlName="address" >
+
+
+          <br>
+          <div>
+          <button type="submit">إضافة</button>
+        </div>
+        </form>
+      </div>
+
+        <div>
+          <ng-template #dropdownContainer></ng-template>
+        </div>
+
+
+    </div>
+
+
+

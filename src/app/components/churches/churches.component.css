@@ -1,0 +1,60 @@
+.churches{
+
+flex-direction: column;
+flex: 70%;
+align-items: center;
+
+}
+form{
+  flex-direction: column;
+  border-radius: 5px;
+  width: 50%;
+}
+form input{
+  width: 150px;
+}
+ button{
+color: var(--white-color);
+  width: 150px;
+  height: 60px;
+  background-color: var(--main-color);
+border-radius: 20px;}
+label{
+  color: black;
+}
+h1{
+  color: var(--main-color);
+  font-weight: bold;
+}
+.home{
+  flex-direction: row;
+  width: 100%;
+
+}
+.title{
+  flex-direction: row-reverse;
+  justify-content:space-evenly;
+  width: 50%;
+}
+.search input{
+  border: 2px solid black;
+  border-radius: 10px;
+height: 30px;
+background-color: #eee;
+border: transparent;
+width: 200px;
+}
+.search input:hover,
+.search input:focus{
+  border-color: var(--main-color);
+}
+.search img{
+  position: absolute;
+right: 5px;
+top: 6px;
+height: 20px;
+}
+.title-text{
+  margin-left: auto;
+  margin-right: -200px;
+}

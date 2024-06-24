@@ -1,0 +1,38 @@
+.top{
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  border: 1px solid;
+  border-color: transparent transparent gray transparent ;
+  background-color: var(--main-color);
+
+}
+.square{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color:var(--main-color);
+  border: 1px var(--white-color) solid;
+}
+.square::after{
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color:var(--white-color) transparent transparent transparent;
+  height: 0;
+  width: 0;
+  position: absolute;
+ top: 54px;
+
+}
+
+.black-cross{
+  height: 100px;
+  width: 50px;
+}
+.top i{
+  width: 30px;
+  height: 30px;
+  color:var(--white-color);
+
+}
+

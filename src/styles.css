@@ -1,0 +1,25 @@
+:root{
+  --main-color:rgba(106, 18, 18, 0.8);
+  --white-color:white;
+
+}
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+
+
+
+/* You can add global styles to this file, and also import other style files */
+@media screen and (max-width: 1096px) {
+
+
+  .details input{
+  width: 100px;
+  }
+.grid-container{
+flex-direction: column;
+}
+}

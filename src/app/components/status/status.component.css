@@ -1,0 +1,88 @@
+
+/*start emit*/
+.grid-container{
+  flex: 70%;
+}
+
+.title h2{
+  color: var(--main-color);
+}
+.search input{
+  border: 2px solid black;
+  border-radius: 10px;
+height: 30px;
+background-color: #eee;
+border: transparent;
+width: 200px;
+}
+.search input:hover,
+.search input:focus{
+  border-color: var(--main-color);
+}
+.search img{
+  position: absolute;
+right: 5px;
+bottom: 17%;
+height: 20px;
+
+
+}
+.sp input,.date input,.ond input{
+  width: 150px;
+border: 1px solid transparent;
+border-bottom-color: black;
+
+}
+.sp span{
+  font-weight: bold;
+}
+.grid-container{
+  display: grid;
+  grid-template-rows: repeat(4,auto);
+
+
+}
+.grid-item{
+  display: flex;
+  flex-direction: row-reverse;
+gap: 100px;
+  justify-content: center;
+  align-items: center;
+
+
+}
+.right,.left{
+  flex-direction: column;
+}
+.details input{
+  margin-bottom: 10px;
+  height: 28px;
+  background-color:#eee;
+}
+.details label{
+  text-align: center;
+}
+.finish{
+  flex-direction: column;
+}
+.finish span{
+  font-weight: bold;
+}
+.check span{
+  color: var(--main-color);
+  margin-left: 2px;
+}
+.check  input{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid var(--main-color);
+}
+
+
+#dropdownContainer{
+  height: 500px;
+}
+
+
+/*End Emit*/
