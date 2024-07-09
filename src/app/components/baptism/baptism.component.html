@@ -1,53 +1,74 @@
  <!--start emit-->
- <app-header (toggleDropdownEvent)="toggleDropdown()"></app-header>
+ 
 
 <div class="home d-flex ">
 
    <div class="grid-container">
-    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit(this.reactiveForm.value)">
+    <form (keydown.enter)="$event.preventDefault()"  [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="grid-item title pt-3">
-   <h2>إصدار وثيقة معمودية</h2>
+   <h2>إصدار وثيقة  معمودية</h2>
    <div class="search position-relative">
-    <input type="search ">
+    <input (keydown.enter)="search($event)" type="search ">
    <img src="../../../assets/images/search.svg">
    </div>
+
+   <div>
+    <span>
+      <select  [(ngModel)]="selectedChid" [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let item of _churches" [value]="item.id">
+      {{item.name}}
+      </option>
+    </select> 
+    الكنيسة</span>
+   </div>
+  
+
+
   </div>
    <div class="grid-item sp d-flex justify-content-center align-items-center pb-2 pt-2">
 
-    <span ><input type="text" placeholder=""  formControlName="Kname">إسم الكاهن</span>
+    <span ><input type="text" placeholder=""  >إسم الكاهن</span>
 
-    <span > <input type="number" placeholder="" formControlName="number">رقم الوثيقة</span>
+    <span > <input   type="number" placeholder="" formControlName="number">رقم الوثيقة</span>
 
-    <span><input type="text" placeholder=""  formControlName="churche">إسم الكنيسة</span>
+    <span><select formControlName="chID">
+      <option *ngFor="let item of _churches" [value]="item.id">
+      {{item.name}}
+      </option>
+    </select>اسم الكنيسة</span>
+    
+   <!-- <span><input type="text" placeholder=""  formControlName="churche">إسم الكنيسة</span>-->
 
 
   </div>
-  <div class="grid-item details ">
+  <div formGroupName="per" class="grid-item details ">
 
     <div class="right d-flex">
 
     <label>الإسم</label>
-     <input type="text" placeholder=""  formControlName="name">
+     <input [readOnly]="true" type="text" placeholder=""  formControlName="firstName">
     <label>الشهرة</label>
-    <input type="text" placeholder="" formControlName="neckName">
+    <input [readOnly]="true" type="text" placeholder="" formControlName="lastName">
 
     <label>إسم الأب</label>
-    <input type="text" placeholder=""  formControlName="fathertName">
+    <input  [readOnly]="true" type="text" placeholder=""  formControlName="fatherName">
     <label>إسم الأم</label>
-    <input type="text" placeholder="" formControlName="motherName">
+    <input [readOnly]="true" type="text" placeholder="" formControlName="motherName">
 
 
   </div>
 
-<div class="left d-flex">
+<div    class="left d-flex">
   <label>رقم القيد</label>
-  <input type="text" placeholder=""  formControlName="Qnumber">
+  <input [readOnly]="true" type="text" placeholder=""  formControlName="constraintNumber">
   <label>الرقم الوطني</label>
-  <input type="text" placeholder=""  formControlName="nationalNumber">
+  <input (blur)="onNationalIdBlur($event)" type="text" placeholder=""  formControlName="nationalNumber">
+  <!--
   <label>مكان الولادة</label>
   <input type="text" placeholder=""  formControlName="bornPlace">
   <label>تاريخ الولادة</label>
   <input type="text" placeholder=""  formControlName="bornDate">
+-->
 </div>
 
 </div>
@@ -58,11 +79,25 @@
       <div class="right d-flex">
 
           <label>اسم الكاهن المعمد</label>
-<input type="text" placeholder="" formControlName="priestName" >
+<input type="text" placeholder="" formControlName="godFatherName" >
       <label>مكان العماد</label>
-      <input type="text" placeholder=""  formControlName="placeBaptism">
+      <input type="text" placeholder=""  formControlName="baptismPlace">
+
+
       <label>تاريخ العماد</label>
-      <input type="text" placeholder=""  formControlName="date"></div>
+      <mat-form-field class="form-field" appearance="outline"> 
+        <input matInput [matDatepicker]="pickerbaptismDate" formControlName="baptismDate">
+       <mat-datepicker-toggle matIconSuffix [for]="pickerbaptismDate"></mat-datepicker-toggle>
+        <mat-datepicker #pickerbaptismDate></mat-datepicker>
+       </mat-form-field>
+      </div>
+      <!--
+
+          <input type="date" placeholder=""  formControlName="baptismDate">
+      -->
+    
+
+      <!--
       <div class="left d-flex"><label>الإسم الكنيسي </label>
         <input type="text" placeholder=""  formControlName="churcheName">
         <label>العراب</label>
@@ -70,15 +105,28 @@
         <label>العرابة</label>
         <input type="text" placeholder=""  formControlName="godmother">
       </div>
+      -->
+      
         </div>
         <div class="save">
           <div class=" finish d-flex  align-items-center pb-3">
-            <div class="check"> <input type="checkbox"  formControlName="ratification"><span>تم التصديق</span></div>
-            <div class="ond">  <input type="text" placeholder=""  formControlName="releaseDate"><span>صدرت بتاريخ</span></div>
+            <div class="check"> <input   type="checkbox"  formControlName="certified"><span>تم التصديق</span></div>
+
+            <div class="ond">  
+              <!--
+              <input type="date" placeholder=""  formControlName="issuanceDate">-->
+               
+              <mat-form-field class="form-field" appearance="outline"> 
+                <input matInput [matDatepicker]="pickerissuanceDate" formControlName="issuanceDate">
+             <mat-datepicker-toggle matIconSuffix [for]="pickerissuanceDate"></mat-datepicker-toggle>
+             <mat-datepicker #pickerissuanceDate></mat-datepicker>
+              </mat-form-field>
+              <span>صدرت بتاريخ</span>
+            </div>
 
            </div>
 
-           <button value="حفظ" type="submit">حفظ</button>
+           <button [disabled]="DocumentIsLocked" value="حفظ" type="submit">حفظ</button>
         </div>
 
 </div>

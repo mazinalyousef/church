@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { StatusComponent } from './components/status/status.component';
@@ -14,7 +15,16 @@ import { FormsModule } from '@angular/forms';
 import { PeopleComponent } from './components/people/people.component';
 import { ListComponent } from './components/list/list.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import{MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HasRoleDirective } from './_directives/has-role.directive';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 const appRout:Routes=[
   {path:"",component:LoginComponent},
@@ -35,19 +45,30 @@ const appRout:Routes=[
     HeaderComponent,
     ChurchesComponent,
     PeopleComponent,
-    ListComponent
+    ListComponent,
+    UserListComponent,
+    RegisterComponent,
+    HasRoleDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
     RouterModule.forRoot(appRout),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
 
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,15 +1,17 @@
 
-<app-header (toggleDropdownEvent)="toggleDropdown()"></app-header>
+ 
 <div class="home d-flex ">
    <div class="grid-container">
-    <form [formGroup]=" peopleReactiveForm" (ngSubmit)="onSubmit(this.peopleReactiveForm.value)">
+   
   <div class="grid-item title pt-3">
    <h2>إضافة شخص</h2>
    <div class="search position-relative">
-    <input type="search ">
+    <input (keydown.enter)="search($event)" type="search ">
  <img src="../../../assets/images/search.svg">
    </div>
   </div>
+
+  <!--
    <div class="grid-item sp d-flex justify-content-center align-items-center pb-2 pt-2">
     <span ><input type="text" placeholder="" formControlName="Kname">إسم الكاهن</span>
 
@@ -19,46 +21,57 @@
 
 
   </div>
+-->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="grid-item details "><div class="right d-flex">
     <label>الإسم</label>
-    <input type="text" placeholder=""  formControlName="name">
+    <input type="text" placeholder=""  formControlName="firstName">
     <label>الشهرة</label>
-    <input type="text" placeholder="" formControlName="neckName">
+    <input type="text" placeholder="" formControlName="lastName">
     <label>الإسم الكنيسي</label>
-    <input type="text" placeholder="" formControlName="churcheName">
+    <input type="text" placeholder="" formControlName="nameInChurch">
     <label>إسم الأب</label>
-    <input type="text" placeholder=""  formControlName="fathertName">
+    <input type="text" placeholder=""  formControlName="fatherName">
     <label>إسم الأم</label>
     <input type="text" placeholder="" formControlName="motherName">
     <label>الرقم الوطني</label>
     <input type="text" placeholder=""  formControlName="nationalNumber">
   </div>
 <div class="left d-flex">  <label>محل القيد</label>
-  <input type="text" placeholder=""  formControlName="place">
+  <input type="text" placeholder=""  formControlName="constraintPlace">
   <label>رقم القيد</label>
-  <input type="text" placeholder=""  formControlName="Qnumber">
+  <input type="text" placeholder=""  formControlName="constraintNumber">
   <label>رقم الموبايل</label>
-  <input type="text" placeholder=""  formControlName="mobileNumber">
+  <input type="text" placeholder=""  formControlName="phon">
   <label>العنوان</label>
-  <input type="text" placeholder=""  formControlName="address">
+  <input type="text" placeholder=""  formControlName="adress">
   <label>مكان الولادة</label>
-  <input type="text" placeholder=""  formControlName="bornPlace">
+  <input type="text" placeholder=""  formControlName="placeOfBirth">
   <label>تاريخ الولادة</label>
-  <input type="text" placeholder=""  formControlName="bornDate">
+ <!-- <input      type="date"  placeholder=""  formControlName="birthDate">-->
+ 
+ <mat-form-field class="form-field" appearance="outline"> 
+     <input matInput [matDatepicker]="pickermFgDate" formControlName="birthDate">
+  <mat-datepicker-toggle matIconSuffix [for]="pickermFgDate"></mat-datepicker-toggle>
+  <mat-datepicker #pickermFgDate></mat-datepicker>
+</mat-form-field>
+
+
 </div>
 </div>
 <div class="grid-item gender">
   <h3 class="fw-b">الجنس</h3>
   <div class="d-flex ">
-    <input type="radio" id="female" name="gender" value="female"  formControlName="female">
+    <input type="radio" id="Rdbtnfemale" name="gender"   >
     <label for="female">أنثى</label>
-  <input type="radio" id="male" name="gender" value="male"  formControlName="male">
+  <input type="radio" id="Rdbtnmale" name="gender"  >
 <label for="male">ذكر</label>
 </div>
-<div class="grid-item mt-5 me-5 "><button type="submit">إضافة</button></div>
+<div class="grid-item mt-5 me-5 "><button type="submit">حفظ</button></div>
 </div>
 </form>
 
    </div>
-<ng-template #dropdownContainer></ng-template>
+ 
 </div>

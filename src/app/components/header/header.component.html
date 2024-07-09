@@ -1,9 +1,40 @@
-<div class="top d-flex align-items-center ">
-  <div class="square d-flex align-items-center justify-content-center ms-2 position-relative " (click)="onToggleDropdown()">
-   <img src="../../../assets/images/mune.svg" width="40px" height="40px">
+<div class="grid-container">
 
+  <div class="row1"> 
+     <div class="top d-flex align-items-center ">
+    <div class="square d-flex align-items-center justify-content-center ms-2 position-relative " (click)="onToggleDropdown()">
+     <img src="../../../assets/images/mune.svg" width="40px" height="40px">
+  
+    </div>
+    <h4 style="color: white;" >مطرانية الروم الأرثوذكس في حمص</h4>
+    <img src="../../../assets/images/christia.svg" class="black-cross">
+    <img src="../../../assets/images/logo.svg" class="logo me-auto">
+    <label >{{userservice.LoggedUserName$|async}}</label>
+    <button *ngIf="currentUser$|async"   (click)="onlogout()">
+       Logout
+  </button>
+  
   </div>
-  <h4 style="color: white;" >مطرانية الروم الأرثوذكس في حمص</h4>
-  <img src="../../../assets/images/christia.svg" class="black-cross">
-  <img src="../../../assets/images/logo.svg" class="logo me-auto">
 </div>
+
+
+  <div *ngIf="userservice.loggedUser$|async" class="row2col1">
+  
+    <app-list ></app-list>
+    
+  </div>
+  <div  class="row2col2">
+    <router-outlet></router-outlet>
+    <!--
+<router-outlet name="defaultrouter"></router-outlet>
+    -->
+    
+</div>
+
+
+
+ 
+</div>
+
+
+

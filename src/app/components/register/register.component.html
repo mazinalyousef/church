@@ -1,0 +1,73 @@
+<div class="component-main-container" style="margin-top: 2%;">
+    <h1  style="display: flex; justify-content: center; align-items: center; flex-direction: column;font-weight: bold;color: #636060; font-size: 40px;">{{title}}</h1>
+
+    <div class="form-container">
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+
+
+          
+          <div   > 
+            <label  style="font-size: 20px;">User Name
+            </label>
+            <input   type="text" formControlName="userName" required>
+        </div>
+         
+
+       
+        <div   > 
+            <label  style="font-size: 20px;">E-Mail
+            </label>
+            <input   type="text" formControlName="email" required>
+        </div>
+
+         
+          <div  *ngIf="!iseditmode">
+            <label >Password:
+            </label>
+            <input  type="password" formControlName="password" >
+          </div>
+
+
+         
+
+
+          
+          <div class="form-group"   >
+            <span><select formControlName="chID">
+                <option *ngFor="let item of churches" [value]="item.id">
+                {{item.name}}
+                </option>
+              </select>اسم الكنيسة</span>
+          </div>
+
+          <div class="form-group"   >
+            <span><select formControlName="role">
+                <option *ngFor="let item of Allroles" [value]="item">
+                {{item}}
+                </option>
+              </select>الدور</span>
+          </div>
+
+
+      
+
+              
+  
+         <div  >        
+          <button  type="submit" 
+           >
+          Save
+          </button>
+  
+          <button  
+          [routerLink]="['/users']"
+           >
+          Cancel
+          </button>
+          </div>
+
+      </form>
+    </div>
+   
+</div>

@@ -35,4 +35,42 @@
   color:var(--white-color);
 
 }
+.grid-container
+{
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  grid-template-rows: 1fr 5fr;
+}
+.row1
+{
+
+
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+.row2col1
+{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+.row2col2
+{
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+.fullgrid
+{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+
 

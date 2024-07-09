@@ -16,15 +16,7 @@ export class HomeComponent {
 
   constructor(private resolver:ComponentFactoryResolver) {}
 
-  toggleDropdown() {
-    if (this.dropdownRef) {
-      this.dropdownRef.destroy();
-      this.dropdownRef = null;
-    } else {
-      const factory = this.resolver.resolveComponentFactory(ListComponent);
-      this.dropdownRef = this.container.createComponent(factory);
-    }
-  }
+ 
 }
 
 
