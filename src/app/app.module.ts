@@ -17,6 +17,8 @@ import { ListComponent } from './components/list/list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from "@angular/material/dialog";
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import{MatButtonModule} from '@angular/material/button';
@@ -25,6 +27,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HasRoleDirective } from './_directives/has-role.directive';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { PeopleListComponent } from './components/people-list/people-list.component';
+import { PeopleContainerComponent } from './components/people-container/people-container.component';
 
 const appRout:Routes=[
   {path:"",component:LoginComponent},
@@ -48,7 +52,9 @@ const appRout:Routes=[
     ListComponent,
     UserListComponent,
     RegisterComponent,
-    HasRoleDirective
+    HasRoleDirective,
+    PeopleListComponent,
+    PeopleContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +68,9 @@ const appRout:Routes=[
     ReactiveFormsModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule
-
+    MatNativeDateModule,
+    MatTabsModule,
+     MatDialogModule
 
   ],
   providers: [

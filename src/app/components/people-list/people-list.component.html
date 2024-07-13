@@ -1,0 +1,27 @@
+<div>
+    <label>الاسم</label>
+    <input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone:true}">
+
+
+    <label>الرقم الوطني</label>
+    <input type="text" [(ngModel)]="nationalId" [ngModelOptions]="{standalone:true}">
+    
+
+    <button (click)="performSearch()">Search</button>
+
+
+    
+ <h2>People List</h2>
+  <ul >
+  <li *ngFor="let item of personsforView">
+      <span>{{item.firstName}}</span>
+      <span>-</span>
+      <span>{{item.lastName}}</span>
+      <span>-</span>
+      <span>{{item.nationalNumber}}</span>
+      <span>
+        <button (click)="selectperson(item.id)" >Select</button>
+      </span>
+  </li>
+  </ul>
+ </div>

@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver } from '@angular/core';
+import { Component, ComponentFactoryResolver, EventEmitter, Input, Output } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { ViewContainerRef } from '@angular/core';
 import { ComponentRef } from '@angular/core';
@@ -14,7 +14,9 @@ import { DateHelperService } from 'src/app/_services/date-helper.service';
   templateUrl: './people.component.html',
   styleUrls: ['./people.component.css']
 })
-export class PeopleComponent {
+export class PeopleComponent
+
+{
   @ViewChild('dropdownContainer', { read: ViewContainerRef }) container: ViewContainerRef;
   dropdownRef: ComponentRef<ListComponent>;
 
@@ -24,6 +26,10 @@ export class PeopleComponent {
   form: FormGroup;
   _person : person;
   loadedid:number;
+
+  @Output() onPersonAdded =new EventEmitter<any>();
+  @Input () ParentContainer:any;
+
 
 
 
@@ -105,11 +111,26 @@ onnew()
       // insert 
       
        
-      this.peopleservice.add(this._person).subscribe(
+      this.peopleservice.add(this._person).subscribe
+      (
+        
         res=>
         {
-          alert("inserted"+ res);
-          this.onnew();
+          var insertedId=res;
+          //alert("inserted"+ res);
+          if (this.ParentContainer)
+          {
+            if (this.ParentContainer==="peopleContainer")
+            {
+              this.onPersonAdded.emit(insertedId);  
+            }
+          }
+          else
+          {
+            alert("inserted"+ res);
+            this.onnew();
+          }
+         
         },error=>
         {
           if(error instanceof HttpErrorResponse) {

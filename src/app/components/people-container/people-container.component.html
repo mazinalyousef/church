@@ -1,0 +1,16 @@
+<div>
+    <mat-tab-group>
+        <mat-tab label="search">
+            <app-people-list
+            [ParentContainer]="containerName"
+            (onPersonSlected)="selectPersonIdFromList($event)"></app-people-list>
+        </mat-tab>
+
+        <mat-tab label="Add">
+            <app-people
+            [ParentContainer]="containerName"
+            (onPersonAdded)="selectPersonIdAfterAdd($event)"
+            ></app-people>
+        </mat-tab>
+    </mat-tab-group>
+</div>

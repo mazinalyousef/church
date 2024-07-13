@@ -1,7 +1,7 @@
 export const environment =
  {
     production: false,
-    _apiUrl:'https://localhost:44377/api/',
-    apiUrl:'http://homsgreek01.somee.com/api/',
+    apiUrl:'https://localhost:44377/api/',
+    _apiUrl:'http://homsgreek01.somee.com/api/',
   };
   

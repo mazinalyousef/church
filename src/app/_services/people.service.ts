@@ -28,6 +28,23 @@ export class PeopleService {
   {
      return this.http.get<person>(this.baseUrl+'Person/ByNationalId/'+nid);
   }
+  get(id:Number):Observable<person>
+  {
+   return this.http.get<person>(this.baseUrl+'Person/'+id);
+  }
+  getAll():Observable<person[]>
+  {
+   return this.http.get<person[]>(this.baseUrl+'Person');
+  }
+  search(nameVal:string,nidVal:string,returnedRecordsVal?:number):Observable<person[]>
+  {
+   if (!returnedRecordsVal)
+   {
+      returnedRecordsVal=100;
+   }
+   let searchParam = { name: nameVal,nid:nidVal,returnedRecords:returnedRecordsVal }
+   return this.http.get<person[]>(this.baseUrl+'Person/Search',{params:searchParam});
+  }
 
 
 }

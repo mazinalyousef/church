@@ -16,6 +16,9 @@ import { UserRoles } from 'src/app/_models/UserRoles';
 import { ChurchService } from 'src/app/_services/church.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DateHelperService } from 'src/app/_services/date-helper.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PeopleContainerComponent } from '../people-container/people-container.component';
+
 @Component({
   selector: 'app-baptism',
   templateUrl: './baptism.component.html',
@@ -24,6 +27,8 @@ import { DateHelperService } from 'src/app/_services/date-helper.service';
 export class BaptismComponent implements OnInit 
 
 {
+
+  
   @ViewChild('dropdownContainer', { read: ViewContainerRef }) container: ViewContainerRef;
   dropdownRef: ComponentRef<ListComponent>;
   _churches?:church[];
@@ -32,18 +37,21 @@ export class BaptismComponent implements OnInit
     private dataService:DataService,private peopleService:PeopleService
     ,private userService:UsersService,
     private churchService:ChurchService,
-    private  datehelper:DateHelperService
+    private  datehelper:DateHelperService,
+    private dialog :MatDialog
+    
     ) {}
   form:FormGroup;
   _certificate :baptismCertificate;
   loadedid:number;
   selectedid:number;
   selectedPerson?:person;
-
   certifiedisDisabled:boolean;
   DocumentIsLocked:boolean;
   UserChId:number;
   selectedChid?:number;
+
+  
   onnew()
 {
     this.loadedid=0;
@@ -276,6 +284,58 @@ export class BaptismComponent implements OnInit
         console.log("error getting national Id "+error)
       }
     );
+  }
+
+  selectPerson()
+  {
+    const dialogConfig =new MatDialogConfig();
+    dialogConfig.autoFocus=true;
+    // passing data to the dialog ....
+    dialogConfig.data=
+    {
+      id:0
+    }
+    const dialogRef = this.dialog.open(PeopleContainerComponent,dialogConfig);
+   dialogRef.afterClosed().subscribe(
+    data=>
+    {
+      if (data)
+      {
+        alert("from dialog - the   selected Id Is :"+data);
+        this.peopleService.get(data).subscribe(
+          res=>
+          {
+          this.selectedPerson=res;
+          this.selectedid=this.selectedPerson.id;
+          this._certificate.peID=this.selectedid;
+              this.form.patchValue({per:this.selectedPerson});
+          },error=>
+          {
+            this.selectedid=0;
+            this._certificate.peID=this.selectedid;
+            this.selectedPerson={} as person;
+            this.selectedPerson.firstName="";
+            this.selectedPerson.lastName="";
+            this.selectedPerson.nationalNumber="";
+            this.selectedPerson.fatherName="";
+            this.selectedPerson.motherName="";
+            this.selectedPerson.constraintPlace="";
+            this.selectedPerson.constraintNumber="";
+            this.form.patchValue({per:this.selectedPerson});
+    
+            alert("Person Id Not Found");
+            console.log("error getting Person Id "+error)
+          }
+        );
+      }
+      else
+      {
+        alert("nothing was selected");
+      }
+      
+    }
+   )
+   
   }
 }
 
